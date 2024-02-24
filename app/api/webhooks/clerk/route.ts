@@ -57,11 +57,11 @@ export async function POST(req: Request) {
     await db.user.create({
       data: {
         externalUserId: payload.data.id,
-        username: payload.data.username ?? payload.data.first_name ?? evt.data.email_addresses[0].email_address,
+        username: payload.data.username,
         imageUrl: payload.data.image_url,
         stream: {
           create: {
-            name: `${payload.data.username ?? payload.data.first_name ?? evt.data.email_addresses[0].email_address}'s stream`,
+            name: `${payload.data.username}'s stream`,
           },
         },
       },
@@ -74,7 +74,7 @@ export async function POST(req: Request) {
         externalUserId: payload.data.id,
       },
       data: {
-        username: payload.data.username ?? payload.data.first_name ?? evt.data.email_addresses[0].email_address,
+        username: payload.data.username,
         imageUrl: payload.data.image_url,
       },
     });
